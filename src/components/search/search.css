@@ -1,0 +1,7 @@
+.search-main {
+  display: flex;
+  flex-direction: row;
+}
+.search-right {
+  width: 1000px;
+}

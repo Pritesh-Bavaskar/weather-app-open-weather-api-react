@@ -1,4 +1,36 @@
 .container {
   max-width: 1080px;
   margin: 20px auto;
+  padding-top: 20px;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+.animation-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  font-size: 24px;
+  color: white;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.animation {
+  width: 30%;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+.forecast {
+  padding-top: 25px;
 }

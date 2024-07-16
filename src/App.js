@@ -4,10 +4,23 @@ import Search from "./components/search/search";
 import { WEATHER_API_KEY, WEATHER_API_URL } from "./api";
 import { useState } from "react";
 import Forecast from "./components/forecast/forecast";
+import weather_icon from "./weather_icon.json";
+import Lottie from "lottie-react";
+import img from "./back_img.png";
+import ClothingRecommendation from "./components/clothing_rec/clothing_rec";
+import { Padding } from "@mui/icons-material";
 
 function App() {
   const [weather, setWeather] = useState(null);
   const [forecast, setForecast] = useState(null);
+
+  const myStyle = {
+    overflow: "hidden",
+    backgroundImage: `url(${img})`,
+    minHeight: "100vh",
+    backgroundSize: "cover",
+    backgroundRepeat: "no-repeat",
+  };
 
   const handleOnSearchChange = (searchData) => {
     const [lat, lon] = searchData.value.split(" ");
@@ -33,10 +46,28 @@ function App() {
 
   console.log("weather : ", weather, "|| forecast : ", forecast);
   return (
-    <div className="container">
-      <Search onSearchChange={handleOnSearchChange} />
-      {weather && <CurrentWeather data={weather} />}
-      {forecast && <Forecast data={forecast} />}
+    <div style={myStyle}>
+      <div className="container">
+        <Search onSearchChange={handleOnSearchChange} />
+
+        <div className="animation-box">
+          {!weather && (
+            <Lottie className="animation" animationData={weather_icon} />
+          )}
+        </div>
+        <div className="animation-box">
+          {!weather && (
+            <p>
+              Uncover Your City's Weather Forecast: Find the Latest Updates Now!
+            </p>
+          )}
+        </div>
+        {weather && <CurrentWeather data={weather} />}
+        <div className="forecast">
+          {forecast && <Forecast data={forecast} />}
+        </div>
+        {weather && <ClothingRecommendation data={weather} />}
+      </div>
     </div>
   );
 }
