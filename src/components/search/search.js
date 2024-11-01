@@ -7,8 +7,6 @@ import MyLocationIcon from "@mui/icons-material/MyLocation";
 
 const Search = ({ onSearchChange }) => {
   const [search, setSearch] = useState(null);
-  const [location, setLocation] = useState({ latitude: null, longitude: null });
-  const [weatherLoc, setWeatherLoc] = useState(null);
   const [error, setError] = useState(null);
 
   const loadOptions = (inputValue) => {
@@ -34,7 +32,6 @@ const Search = ({ onSearchChange }) => {
       navigator.geolocation.getCurrentPosition(
         async (position) => {
           const { latitude, longitude } = position.coords;
-          setLocation({ latitude, longitude });
           setError(null);
 
           try {
@@ -42,8 +39,6 @@ const Search = ({ onSearchChange }) => {
               `https://wft-geo-db.p.rapidapi.com/v1/geo/locations/${latitude}${longitude}/nearbyCities?radius=100`,
               geoApiOptions
             );
-            const weatherResponse = await response.json();
-            setWeatherLoc({ city: weatherResponse, ...weatherResponse });
             setSearch({
               value: `${latitude} ${longitude}`,
               label: "Current Location",

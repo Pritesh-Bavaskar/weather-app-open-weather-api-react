@@ -12,11 +12,3 @@ export const WEATHER_API_KEY = "abe9e77652ff90cd5cd14454e8ffb38f";
 
 export const geoApiNearCities =
   "https://wft-geo-db.p.rapidapi.com/v1/geo/locations/33.832213-118.387099/nearbyCities?radius=100";
-
-// try {
-//   const response = await fetch(geo_api_url, geoApiOptions);
-//   const result = await response.text();
-//   console.log("results", result);
-// } catch (error) {
-//   console.error(error);
-// }
